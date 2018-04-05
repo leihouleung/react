@@ -6,12 +6,14 @@ import Publicfunc from './common/publicfunc'
 import './css/header.css'
 
 class Header extends React.Component {
+
     constructor(){
         super();
         let datetime = new Date();
         this.state = {
             username :"",
-            DateTime : datetime
+            DateTime : datetime,
+            isMinHeight:true
         }; //初始化赋值
     };
     inputName(event){
@@ -23,15 +25,28 @@ class Header extends React.Component {
 
     };
 
+    switchHeight(){
+        this.setState({
+            isMinHeight:!this.state.isMinHeight
+        });
+    };
     render(){
-
+        const styleHeader = {
+            header:{
+                padding:"20px",
+                backgroundColor:"#e3e3e3"
+            },
+            font:{
+                color:(this.state.isMinHeight)?"#000000":"#3f42ac"
+            },
+        };
         let datetime = new Date();
 
         return(
-            <div className = "header">
-                <h1>Hello ! {this.state.username}</h1>
+            <div className = "header" style = {styleHeader.header}>
+                <h1 onClick={this.switchHeight.bind(this)} style = {styleHeader.font} >Hello ! {this.state.username}</h1>
                 <h2>The {this.props.Time} visit today</h2>
-                <h3>Today is {datetime.getFullYear() + "-" + (datetime.getMonth()+1) + "-" + datetime.getDay()}</h3>
+                <h3>Today is {datetime.getFullYear() + "-" + (datetime.getMonth()+1) + "-" + (datetime.getDay()+1)}</h3>
                 <HeaderInput {...this.props} inputName = {this.inputName.bind(this)}/>
             </div>
         )
