@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import HeaderInput from './headerInput'
 import ReactMixin from 'react-mixin'
 import Publicfunc from './common/publicfunc'
-import './css/header.css'
+//import './css/header.css'
+import HeaderCss from './css/header.css'
 
 class Header extends React.Component {
 
@@ -20,9 +21,6 @@ class Header extends React.Component {
         this.setState({
             username:event.target.value
         })
-        
-        Publicfunc.log(event.target.value);
-
     };
 
     switchHeight(){
@@ -43,9 +41,9 @@ class Header extends React.Component {
         let datetime = new Date();
 
         return(
-            <div className = "header" style = {styleHeader.header}>
+            <div className = {HeaderCss.header} style = {styleHeader.header}>
                 <h1 onClick={this.switchHeight.bind(this)} style = {styleHeader.font} >Hello ! {this.state.username}</h1>
-                <h2>The {this.props.Time} visit today</h2>
+                <h2 className ="title" >The {this.props.Time} visit today</h2>
                 <h3>Today is {datetime.getFullYear() + "-" + (datetime.getMonth()+1) + "-" + (datetime.getDay()+1)}</h3>
                 <HeaderInput {...this.props} inputName = {this.inputName.bind(this)}/>
             </div>

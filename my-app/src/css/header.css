@@ -2,3 +2,7 @@
     font-size: 2em;
     text-align: center;
 }
+
+:global(.title){
+    color: #c2c5d4;
+}

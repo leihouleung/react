@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Header from './header'
+import LoginComponent from './login';
 import registerServiceWorker from './registerServiceWorker';
 
 class Index extends React.Component {
@@ -14,7 +15,7 @@ class Index extends React.Component {
         return (
             <div>
                 {login  ? <Header Time={login} /> : ''}
-                <App />
+                <LoginComponent/>
             </div>
         )
     }
